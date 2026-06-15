@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monte Carlo · World Cup 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #07090F;
+    --surface: #0F1523;
+    --card:    #141C2E;
+    --border:  #1E2D47;
+    --cyan:    #00D4FF;
+    --gold:    #FFD700;
+    --green:   #00E676;
+    --text:    #E2E8F0;
+    --muted:   #5A6A88;
+    --mono:    'JetBrains Mono', monospace;
+    --sans:    'Inter', sans-serif;
+  }
+
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; overflow-x: hidden; }
+
+  header {
+    position: relative;
+    padding: 40px 32px 32px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 120% at 50% -20%, rgba(0,212,255,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--cyan); text-transform: uppercase; margin-bottom: 10px; }
+  h1 { font-family: var(--mono); font-size: clamp(22px, 4vw, 38px); font-weight: 700; line-height: 1.1; color: #fff; margin-bottom: 6px; }
+  h1 span { color: var(--cyan); }
+  .header-sub { font-size: 12px; color: var(--muted); font-family: var(--mono); }
+
+  .stats-bar { display: flex; border-bottom: 1px solid var(--border); overflow-x: auto; }
+  .stat-item { flex: 1; min-width: 110px; padding: 14px 20px; border-right: 1px solid var(--border); text-align: center; }
+  .stat-item:last-child { border-right: none; }
+  .stat-val { font-family: var(--mono); font-size: 20px; font-weight: 700; color: var(--cyan); display: block; margin-bottom: 3px; }
+  .stat-label { font-size: 9px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .tabs { display: flex; padding: 0 32px; border-bottom: 1px solid var(--border); overflow-x: auto; }
+  .tab-btn { background: none; border: none; border-bottom: 2px solid transparent; padding: 12px 18px; color: var(--muted); font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+  .tab-btn.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+  .tab-btn:hover:not(.active) { color: var(--text); }
+
+  .main { display: grid; grid-template-columns: 1fr 300px; min-height: calc(100vh - 220px); }
+
+  .chart-panel { padding: 24px 28px; border-right: 1px solid var(--border); }
+  .panel-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 20px; }
+
+  .team-row { display: grid; grid-template-columns: 150px 1fr 62px; align-items: center; gap: 10px; margin-bottom: 10px; }
+
+  .team-name { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 6px; }
+  .rank-num { font-family: var(--mono); font-size: 9px; color: var(--muted); width: 16px; text-align: right; flex-shrink: 0; }
+
+  .bar-track { height: 26px; background: var(--surface); border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+  .bar-fill { height: 100%; border-radius: 4px; width: 0%; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1); display: flex; align-items: center; padding-left: 8px; font-family: var(--mono); font-size: 10px; font-weight: 600; color: rgba(0,0,0,0.8); white-space: nowrap; }
+
+  .pct-label { font-family: var(--mono); font-size: 12px; font-weight: 700; text-align: right; }
+
+  .t1 { background: linear-gradient(90deg, #FFD700, #FFA500); }
+  .t2 { background: linear-gradient(90deg, #00D4FF, #0099CC); }
+  .t3 { background: linear-gradient(90deg, #00E676, #00AA55); }
+  .t4 { background: linear-gradient(90deg, #7C4DFF, #5722FF); }
+  .t5 { background: linear-gradient(90deg, #3A4D6A, #2A3A52); }
+
+  .sidebar { padding: 24px 20px; background: var(--surface); overflow-y: auto; }
+
+  .sim-btn { width: 100%; padding: 13px; background: var(--cyan); color: #000; border: none; border-radius: 6px; font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; margin-bottom: 16px; transition: all 0.15s; }
+  .sim-btn:hover { background: #00F0FF; transform: translateY(-1px); }
+  .sim-btn.running { background: var(--border); color: var(--muted); cursor: not-allowed; transform: none; }
+
+  .sim-progress { font-family: var(--mono); font-size: 10px; color: var(--muted); text-align: center; margin-top: -10px; margin-bottom: 14px; height: 14px; }
+
+  .ctrl-group { margin-bottom: 18px; }
+  .ctrl-label { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .ctrl-label span { color: var(--cyan); }
+  input[type="range"] { width: 100%; -webkit-appearance: none; height: 3px; background: var(--border); border-radius: 2px; outline: none; }
+  input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; background: var(--cyan); border-radius: 50%; cursor: pointer; }
+
+  .section-divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+  .podium-label { font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
+  .podium-item { display: flex; align-items: center; gap: 8px; padding: 9px 10px; border-radius: 5px; margin-bottom: 6px; border: 1px solid var(--border); background: var(--card); }
+  .podium-item:nth-child(1) { border-color: rgba(255,215,0,0.35); background: rgba(255,215,0,0.04); }
+  .podium-item:nth-child(2) { border-color: rgba(0,212,255,0.2); }
+  .podium-rank { font-family: var(--mono); font-size: 15px; font-weight: 700; width: 22px; text-align: center; }
+  .r1 { color: var(--gold); } .r2 { color: var(--cyan); } .r3 { color: var(--green); }
+  .podium-info { flex: 1; }
+  .podium-team { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .podium-pct { font-family: var(--mono); font-size: 9px; color: var(--muted); }
+
+  .insight-box { margin-top: 14px; padding: 12px; background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.15); border-radius: 6px; }
+  .insight-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; color: var(--cyan); text-transform: uppercase; margin-bottom: 6px; }
+  .insight-text { font-size: 11px; color: var(--muted); line-height: 1.7; }
+  .insight-text strong { color: var(--text); }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* Groups panel */
+  .groups-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; padding: 4px 0; }
+  .group-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+  .group-header { padding: 8px 12px; background: var(--surface); border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; display: flex; justify-content: space-between; }
+  .group-header span { color: var(--cyan); }
+  .group-team { padding: 7px 12px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(30,45,71,0.5); font-size: 11px; }
+  .group-team:last-child { border-bottom: none; }
+  .group-team-pct { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .host-badge { font-size: 8px; background: rgba(0,212,255,0.15); color: var(--cyan); padding: 1px 5px; border-radius: 3px; font-family: var(--mono); }
+  .debut-badge { font-size: 8px; background: rgba(0,230,118,0.12); color: var(--green); padding: 1px 5px; border-radius: 3px; font-family: var(--mono); }
+
+  /* About */
+  .about-panel { padding: 28px; max-width: 660px; }
+  .about-h { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--cyan); margin-bottom: 10px; letter-spacing: 0.05em; }
+  .about-p { font-size: 12px; line-height: 1.8; color: var(--muted); margin-bottom: 16px; }
+  .about-p strong { color: var(--text); }
+  .code-block { background: var(--surface); border: 1px solid var(--border); border-radius: 5px; padding: 14px; font-family: var(--mono); font-size: 11px; color: var(--green); line-height: 1.7; margin: 10px 0 16px; overflow-x: auto; }
+  .missing-box { padding: 14px; background: rgba(255,80,80,0.05); border: 1px solid rgba(255,80,80,0.2); border-radius: 6px; margin-top: 12px; font-size: 11px; line-height: 1.7; color: var(--muted); }
+  .missing-box strong { color: #FF5050; }
+
+  .watermark { padding: 14px 28px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .wm-text { font-family: var(--mono); font-size: 9px; color: var(--muted); }
+  .wm-tag { font-family: var(--mono); font-size: 11px; color: var(--cyan); font-weight: 600; }
+
+  .dots { display: inline-flex; gap: 3px; }
+  .dots span { width: 3px; height: 3px; border-radius: 50%; background: var(--cyan); animation: db 1.2s infinite; }
+  .dots span:nth-child(2) { animation-delay: 0.2s; }
+  .dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes db { 0%,80%,100%{ transform:scale(.6);opacity:.4 } 40%{ transform:scale(1);opacity:1 } }
+
+  @media (max-width: 768px) {
+    .main { grid-template-columns: 1fr; }
+    .sidebar { border-top: 1px solid var(--border); }
+    .team-row { grid-template-columns: 120px 1fr 52px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Data Science Series · @fhrzl</div>
+  <h1>Monte Carlo <span>World Cup 2026</span></h1>
+  <div class="header-sub">10,000 simulations · 48 official teams · 12 groups · real draw</div>
+</header>
+
+<div class="stats-bar">
+  <div class="stat-item"><span class="stat-val" id="stat-n">10,000</span><span class="stat-label">Simulations</span></div>
+  <div class="stat-item"><span class="stat-val">48</span><span class="stat-label">Teams</span></div>
+  <div class="stat-item"><span class="stat-val">12</span><span class="stat-label">Groups</span></div>
+  <div class="stat-item"><span class="stat-val" id="stat-fav">Spain</span><span class="stat-label">Top Favorite</span></div>
+  <div class="stat-item"><span class="stat-val" id="stat-dark">Mexico</span><span class="stat-label">Dark Horse</span></div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('champion',this)">Champion %</button>
+  <button class="tab-btn" onclick="switchTab('finalist',this)">Finalist %</button>
+  <button class="tab-btn" onclick="switchTab('semi',this)">Semi %</button>
+  <button class="tab-btn" onclick="switchTab('groups',this)">Groups</button>
+  <button class="tab-btn" onclick="switchTab('about',this)">Metodologi</button>
+</div>
+
+<div class="main">
+  <div class="chart-panel">
+    <div class="panel-title" id="panel-title">CHAMPION PROBABILITY — TOP 15</div>
+
+    <div class="tab-panel active" id="tab-champion"><div id="chart-champion"></div></div>
+    <div class="tab-panel" id="tab-finalist"><div id="chart-finalist"></div></div>
+    <div class="tab-panel" id="tab-semi"><div id="chart-semi"></div></div>
+
+    <div class="tab-panel" id="tab-groups">
+      <div class="groups-grid" id="groups-grid"></div>
+    </div>
+
+    <div class="tab-panel" id="tab-about">
+      <div class="about-panel">
+        <div class="about-h">// Apa itu Monte Carlo Simulation?</div>
+        <p class="about-p">Monte Carlo adalah metode simulasi yang menjalankan skenario <strong>ribuan kali</strong> dengan input acak, lalu melihat distribusi hasilnya. Karena kita tidak bisa memprediksi satu pertandingan secara pasti, kita simulasikan <strong>10.000 kemungkinan turnamen</strong> dan hitung berapa kali setiap tim menang.</p>
+
+        <div class="about-h">// Model</div>
+        <div class="code-block">
+# Setiap pertandingan:<br>
+score_A = strength_A + gauss(μ=0, σ=0.15)<br>
+score_B = strength_B + gauss(μ=0, σ=0.15)<br>
+winner  = A if score_A > score_B else B<br><br>
+# σ = 0.15 → upset rate ~30%, realistis
+        </div>
+        <p class="about-p"><strong>Strength rating</strong> dikonversi dari FIFA Ranking resmi April 1, 2026. France #1 → 0.93, New Zealand #88 → 0.52. Gaussian noise mewakili faktor tak terduga: cedera, momentum, keberuntungan.</p>
+
+        <div class="about-h">// Kenapa Spain / France Favorit?</div>
+        <p class="about-p">Ini efek grup yang menarik — mereka tidak bertemu sampai babak knockout lanjut. Spain di Grup H bersama Cape Verde, Saudi Arabia, Uruguay. France di Grup I (Group of Death) bersama Senegal, Norway, Iraq. Tapi begitu lolos grup, bracket terbuka lebar.</p>
+
+        <div class="missing-box">
+          <strong>⚠ Tim yang tidak lolos ke WC 2026:</strong><br>
+          Italy (gagal playoff UEFA untuk ketiga kalinya — kalah adu penalti ke Bosnia), Poland (kalah dari Sweden), Denmark (kalah dari Czechia). Ini storyline terbesar turnamen ini.
+        </div>
+
+        <div class="about-h" style="margin-top:16px">// Law of Large Numbers</div>
+        <p class="about-p">Coba jalankan 1.000 vs 50.000 simulasi dan bandingkan hasilnya. Semakin banyak N, semakin stabil probabilitasnya — ini adalah <strong>Law of Large Numbers</strong> in action.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="ctrl-group">
+      <div class="ctrl-label">Simulations: <span id="n-display">10,000</span></div>
+      <input type="range" id="n-slider" min="1000" max="50000" step="1000" value="10000" oninput="updateN(this.value)">
+    </div>
+
+    <button class="sim-btn" id="sim-btn" onclick="runSim()">▶ RUN SIMULATION</button>
+    <div class="sim-progress" id="sim-progress"></div>
+
+    <div class="section-divider"></div>
+
+    <div class="podium-label">Top Contenders</div>
+    <div id="podium"></div>
+
+    <div class="insight-box">
+      <div class="insight-label">// Insight</div>
+      <div class="insight-text" id="insight"></div>
+    </div>
+  </div>
+</div>
+
+<div class="watermark">
+  <span class="wm-text">48 official teams · FIFA WC 2026 real draw · Monte Carlo</span>
+  <span class="wm-tag">@fhrzl</span>
+</div>
+
+<script>
+// ============================================================
+// 48 OFFICIAL TEAMS + ACTUAL GROUP DRAW
+// ============================================================
+
+const TEAMS = {
+  // UEFA
+  "France":          0.93, "Spain":           0.92, "England":         0.88,
+  "Portugal":        0.87, "Netherlands":     0.84, "Germany":         0.83,
+  "Belgium":         0.82, "Croatia":         0.79, "Switzerland":     0.75,
+  "Norway":          0.72, "Austria":         0.71, "Sweden":          0.70,
+  "Czechia":         0.68, "Scotland":        0.65, "Turkiye":         0.73,
+  "Bosnia and Herzegovina": 0.60,
+  // CONMEBOL
+  "Argentina":       0.91, "Brazil":          0.89, "Colombia":        0.78,
+  "Uruguay":         0.76, "Ecuador":         0.64, "Paraguay":        0.61,
+  // CAF
+  "Morocco":         0.80, "Senegal":         0.74, "Egypt":           0.66,
+  "Algeria":         0.65, "Ivory Coast":     0.63, "DR Congo":        0.61,
+  "Tunisia":         0.60, "South Africa":    0.58, "Cape Verde":      0.55,
+  "Ghana":           0.59,
+  // AFC
+  "Japan":           0.74, "South Korea":     0.71, "Iran":            0.67,
+  "Australia":       0.66, "Saudi Arabia":    0.58, "Iraq":            0.58,
+  "Qatar":           0.56, "Uzbekistan":      0.57, "Jordan":          0.54,
+  // CONCACAF
+  "USA":             0.72, "Mexico":          0.73, "Canada":          0.69,
+  "Panama":          0.58, "Haiti":           0.50, "Curacao":         0.50,
+  // OFC
+  "New Zealand":     0.52,
+};
+
+const GROUPS = {
+  A: {teams: ["Mexico","South Africa","South Korea","Czechia"],           host: "Mexico"},
+  B: {teams: ["Canada","Switzerland","Qatar","Bosnia and Herzegovina"],   host: "Canada"},
+  C: {teams: ["Brazil","Morocco","Haiti","Scotland"],                     host: null},
+  D: {teams: ["USA","Paraguay","Australia","Turkiye"],                    host: "USA"},
+  E: {teams: ["Germany","Curacao","Ivory Coast","Ecuador"],               host: null},
+  F: {teams: ["Netherlands","Japan","Sweden","Tunisia"],                  host: null},
+  G: {teams: ["Belgium","Egypt","Iran","New Zealand"],                    host: null},
+  H: {teams: ["Spain","Cape Verde","Saudi Arabia","Uruguay"],             host: null},
+  I: {teams: ["France","Senegal","Norway","Iraq"],                        host: null},
+  J: {teams: ["Argentina","Algeria","Austria","Jordan"],                  host: null},
+  K: {teams: ["Portugal","DR Congo","Uzbekistan","Colombia"],             host: null},
+  L: {teams: ["England","Croatia","Ghana","Panama"],                      host: null},
+};
+
+const DEBUTS = new Set(["Cape Verde","Curacao","Jordan","Uzbekistan"]);
+const HOSTS  = new Set(["USA","Mexico","Canada"]);
+
+function randn() {
+  let u=0,v=0;
+  while(!u) u=Math.random();
+  while(!v) v=Math.random();
+  return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);
+}
+
+function match(a, b) {
+  const sa = TEAMS[a] + randn()*0.15;
+  const sb = TEAMS[b] + randn()*0.15;
+  if (sa===sb) return Math.random()<.5?a:b;
+  return sa>sb?a:b;
+}
+
+function groupStage() {
+  const q=[]; const thirds=[];
+  for (const {teams} of Object.values(GROUPS)) {
+    const pts={}, gd={};
+    teams.forEach(t=>{pts[t]=0;gd[t]=0;});
+    for(let i=0;i<teams.length;i++){
+      for(let j=i+1;j<teams.length;j++){
+        const w=match(teams[i],teams[j]);
+        const l=w===teams[i]?teams[j]:teams[i];
+        pts[w]+=3; gd[w]+=Math.floor(Math.random()*3)+1; gd[l]-=Math.floor(Math.random()*2);
+      }
+    }
+    const r=[...teams].sort((a,b)=>(pts[b]-pts[a])||(gd[b]-gd[a]));
+    q.push(r[0],r[1]);
+    thirds.push({team:r[2],pts:pts[r[2]],gd:gd[r[2]]});
+  }
+  thirds.sort((a,b)=>(b.pts-a.pts)||(b.gd-a.gd));
+  for(let i=0;i<8;i++) q.push(thirds[i].team);
+  return q;
+}
+
+function runSim() {
+  const btn=document.getElementById('sim-btn');
+  const prog=document.getElementById('sim-progress');
+  btn.classList.add('running'); btn.textContent='SIMULATING...';
+  const N=parseInt(document.getElementById('n-slider').value);
+  const champ={},final={},semi={};
+  Object.keys(TEAMS).forEach(t=>{champ[t]=0;final[t]=0;semi[t]=0;});
+  let done=0;
+  const BATCH=300;
+
+  function batch(){
+    const end=Math.min(done+BATCH,N);
+    for(let s=done;s<end;s++){
+      const q32=groupStage();
+      const r16=[]; for(let i=0;i<32;i+=2) r16.push(match(q32[i],q32[i+1]));
+      const qf=[];  for(let i=0;i<16;i+=2) qf.push(match(r16[i],r16[i+1]));
+      const sf=[];  for(let i=0;i<8;i+=2)  sf.push(match(qf[i],qf[i+1]));
+      sf.forEach(t=>semi[t]++);
+      const fn=[];  for(let i=0;i<4;i+=2)  fn.push(match(sf[i],sf[i+1]));
+      fn.forEach(t=>final[t]++);
+      const c=match(fn[0],fn[1]); champ[c]++;
+    }
+    done=end;
+    const pct=Math.round(done/N*100);
+    prog.innerHTML=`<div class="dots"><span></span><span></span><span></span></div> ${pct}% (${done.toLocaleString()} / ${N.toLocaleString()})`;
+    if(done<N){ requestAnimationFrame(batch); return; }
+
+    const results={};
+    Object.keys(TEAMS).forEach(t=>{
+      results[t]={champion_pct:+(champ[t]/N*100).toFixed(2),finalist_pct:+(final[t]/N*100).toFixed(2),semi_pct:+(semi[t]/N*100).toFixed(2),strength:TEAMS[t]};
+    });
+    btn.classList.remove('running'); btn.textContent='▶ RUN AGAIN';
+    prog.innerHTML=`✓ Done · ${N.toLocaleString()} simulations`;
+    document.getElementById('stat-n').textContent=N.toLocaleString();
+    renderAll(results);
+  }
+  requestAnimationFrame(batch);
+}
+
+function getColor(rank) {
+  if(rank<1) return 't1';
+  if(rank<3) return 't2';
+  if(rank<6) return 't3';
+  if(rank<10) return 't4';
+  return 't5';
+}
+
+function buildChart(cid, data, key, maxVal) {
+  const c=document.getElementById(cid); c.innerHTML='';
+  data.slice(0,15).forEach(([team,stats],i)=>{
+    const v=stats[key]; const pct=v/maxVal*100; const cls=getColor(i);
+    const row=document.createElement('div');
+    row.className='team-row';
+    row.innerHTML=`
+      <div class="team-name">
+        <span class="rank-num">${i+1}</span>
+        ${team}
+      </div>
+      <div class="bar-track"><div class="bar-fill ${cls}" data-t="${pct}" style="width:0%">${v}%</div></div>
+      <div class="pct-label" style="color:${i===0?'var(--gold)':i<4?'var(--cyan)':'var(--text)'}">${v}%</div>
+    `;
+    c.appendChild(row);
+  });
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    c.querySelectorAll('.bar-fill').forEach(b=>b.style.width=b.dataset.t+'%');
+  }));
+}
+
+function buildGroups(results) {
+  const grid=document.getElementById('groups-grid'); grid.innerHTML='';
+  for(const [gName, gData] of Object.entries(GROUPS)){
+    const card=document.createElement('div'); card.className='group-card';
+    const sorted=[...gData.teams].sort((a,b)=>((results[b]?.champion_pct||0)-(results[a]?.champion_pct||0)));
+    const deathTag = gName==='I'?' 💀':'';
+    card.innerHTML=`
+      <div class="group-header">Group ${gName}${deathTag} <span></span></div>
+      ${sorted.map(t=>`
+        <div class="group-team">
+          <span>${t}${HOSTS.has(t)?` <span class="host-badge">host</span>`:''}${DEBUTS.has(t)?` <span class="debut-badge">debut</span>`:''}</span>
+          <span class="group-team-pct">${results[t]?.champion_pct||0}%</span>
+        </div>
+      `).join('')}
+    `;
+    grid.appendChild(card);
+  }
+}
+
+function renderAll(results) {
+  const sc=Object.entries(results).sort((a,b)=>b[1].champion_pct-a[1].champion_pct);
+  const sf=Object.entries(results).sort((a,b)=>b[1].finalist_pct-a[1].finalist_pct);
+  const ss=Object.entries(results).sort((a,b)=>b[1].semi_pct-a[1].semi_pct);
+
+  buildChart('chart-champion', sc, 'champion_pct', sc[0][1].champion_pct);
+  buildChart('chart-finalist', sf, 'finalist_pct', sf[0][1].finalist_pct);
+  buildChart('chart-semi',     ss, 'semi_pct',     ss[0][1].semi_pct);
+  buildGroups(results);
+
+  // Podium
+  const podium=document.getElementById('podium');
+  const emojis=['🥇','🥈','🥉']; const rclass=['r1','r2','r3'];
+  podium.innerHTML=sc.slice(0,3).map(([t,s],i)=>`
+    <div class="podium-item">
+      <div class="podium-rank ${rclass[i]}">${emojis[i]}</div>
+      <div class="podium-info">
+        <div class="podium-team">${t}</div>
+        <div class="podium-pct">${s.champion_pct}% champion · ${s.finalist_pct}% finalist</div>
+      </div>
+    </div>
+  `).join('');
+
+  const dh=Object.entries(results).filter(([t,s])=>s.strength<0.75&&s.champion_pct>0.3).sort((a,b)=>b[1].champion_pct-a[1].champion_pct);
+  document.getElementById('stat-fav').textContent=sc[0][0];
+  document.getElementById('stat-dark').textContent=dh[0]?.[0]||'Morocco';
+
+  const N=parseInt(document.getElementById('n-slider').value);
+  const top=sc[0]; const dhorse=dh[0];
+  document.getElementById('insight').innerHTML=`
+    <strong>${top[0]}</strong> juara di ${top[1].champion_pct}% dari ${N.toLocaleString()} simulasi.
+    ${dhorse?`Dark horse terkuat: <strong>${dhorse[0]}</strong> dengan ${dhorse[1].champion_pct}% peluang juara meskipun strength rating-nya ${dhorse[1].strength}.`:''}
+    Italy tidak ada di sini — mereka gagal lolos untuk ketiga kalinya.
+  `;
+}
+
+function updateN(v) { document.getElementById('n-display').textContent=parseInt(v).toLocaleString(); }
+
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
+  const titles={champion:'CHAMPION PROBABILITY — TOP 15',finalist:'FINALIST PROBABILITY — TOP 15',semi:'SEMI-FINAL PROBABILITY — TOP 15',groups:'ALL 12 OFFICIAL GROUPS + CHAMPION PROBABILITY',about:'METODOLOGI & PENJELASAN'};
+  document.getElementById('panel-title').textContent=titles[name];
+}
+
+// ── LIVE DATA FETCH ──────────────────────────────────────────────────────────
+// Fetch strengths.json yang di-update GitHub Actions setiap 30 menit
+// Fallback ke prebuilt kalau fetch gagal (offline / sebelum tournament)
+
+async function fetchStrengths() {
+  // Coba fetch dari repo — path relatif works di GitHub Pages
+  const urls = [
+    './data/strengths.json',
+    'https://raw.githubusercontent.com/fhrzl/wc2026-simulator/main/data/strengths.json',
+  ];
+  for (const url of urls) {
+    try {
+      const res = await fetch(url, { cache: 'no-cache' });
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      }
+    } catch (_) {}
+  }
+  return null;
+}
+
+function showLiveBanner(meta) {
+  const banner = document.createElement('div');
+  const played = meta.matches_played || 0;
+  const total  = meta.matches_total  || 104;
+  const ts     = meta.updated_at ? new Date(meta.updated_at).toLocaleString('id-ID', {timeZone:'Asia/Jakarta'}) : '-';
+  banner.style.cssText = `
+    background: rgba(0,212,255,0.06);
+    border-bottom: 1px solid rgba(0,212,255,0.2);
+    padding: 8px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+  `;
+  banner.innerHTML = `
+    <span>⚡ LIVE DATA — Strength diupdate dari hasil nyata · <strong style="color:var(--cyan)">${played}/${total}</strong> match dimainkan</span>
+    <span>Last update: ${ts} WIB · auto-refresh tiap 30 mnt</span>
+  `;
+  document.querySelector('header').after(banner);
+}
+
+function showRecentResults(log) {
+  if (!log || log.length === 0) return;
+  const sidebar = document.querySelector('.sidebar');
+  const div = document.createElement('div');
+  div.style.cssText = 'margin-top:14px; padding-top:14px; border-top:1px solid var(--border)';
+  div.innerHTML = `
+    <div style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px">Recent Results</div>
+    ${log.slice(-5).reverse().map(r => `
+      <div style="font-size:10px;padding:5px 0;border-bottom:1px solid rgba(30,45,71,0.4);display:flex;justify-content:space-between;align-items:center">
+        <span style="color:var(--text)">${r.match}</span>
+        <span style="font-family:var(--mono);font-size:9px;color:${r.delta>0?'var(--green)':'#FF6B6B'}">${r.delta>0?'+':''}${r.delta}</span>
+      </div>
+    `).join('')}
+    <div style="font-size:9px;color:var(--muted);margin-top:6px;font-family:var(--mono)">delta = perubahan strength rating</div>
+  `;
+  sidebar.appendChild(div);
+}
+
+// ── AUTO REFRESH setiap 30 menit ─────────────────────────────────────────────
+let refreshInterval = null;
+function startAutoRefresh() {
+  refreshInterval = setInterval(async () => {
+    const data = await fetchStrengths();
+    if (data) loadFromLiveData(data);
+  }, 30 * 60 * 1000); // 30 menit
+}
+
+async function loadFromLiveData(data) {
+  const strengths = data.strengths || {};
+  showLiveBanner(data.meta || {});
+  showRecentResults(data.results_log || []);
+
+  // Update TEAMS object dengan live strengths
+  for (const [team, val] of Object.entries(strengths)) {
+    if (TEAMS.hasOwnProperty(team)) TEAMS[team] = val;
+  }
+
+  // Run simulation dengan live strengths
+  runSim();
+}
+
+// Load with real pre-simulated data
+window.addEventListener('load', async () => {
+  // Try live data first
+  const liveData = await fetchStrengths();
+  if (liveData && liveData.meta && liveData.meta.matches_played > 0) {
+    await loadFromLiveData(liveData);
+    startAutoRefresh();
+    return;
+  }
+
+  // Fallback: prebuilt data
+  const prebuilt = {
+    "Spain":          {champion_pct:17.51, finalist_pct:29.21, semi_pct:42.19, strength:0.92},
+    "France":         {champion_pct:16.77, finalist_pct:25.92, semi_pct:32.94, strength:0.93},
+    "Brazil":         {champion_pct:13.45, finalist_pct:24.94, semi_pct:44.75, strength:0.89},
+    "Argentina":      {champion_pct:13.38, finalist_pct:22.60, semi_pct:28.93, strength:0.91},
+    "England":        {champion_pct:7.29,  finalist_pct:13.62, semi_pct:19.53, strength:0.88},
+    "Portugal":       {champion_pct:6.58,  finalist_pct:12.42, semi_pct:17.92, strength:0.87},
+    "Germany":        {champion_pct:4.91,  finalist_pct:11.55, semi_pct:20.85, strength:0.83},
+    "Netherlands":    {champion_pct:4.61,  finalist_pct:10.69, semi_pct:20.26, strength:0.84},
+    "Belgium":        {champion_pct:3.72,  finalist_pct:8.23,  semi_pct:15.99, strength:0.82},
+    "Morocco":        {champion_pct:2.55,  finalist_pct:6.63,  semi_pct:18.05, strength:0.80},
+    "Switzerland":    {champion_pct:1.19,  finalist_pct:4.34,  semi_pct:14.37, strength:0.75},
+    "Croatia":        {champion_pct:1.15,  finalist_pct:3.02,  semi_pct:6.20,  strength:0.79},
+    "Colombia":       {champion_pct:1.00,  finalist_pct:2.78,  semi_pct:6.44,  strength:0.78},
+    "Mexico":         {champion_pct:0.81,  finalist_pct:2.92,  semi_pct:10.83, strength:0.73},
+    "Turkiye":        {champion_pct:0.71,  finalist_pct:2.46,  semi_pct:8.88,  strength:0.73},
+    "Japan":          {champion_pct:0.63,  finalist_pct:2.09,  semi_pct:7.01,  strength:0.74},
+    "Uruguay":        {champion_pct:0.62,  finalist_pct:2.22,  semi_pct:6.76,  strength:0.76},
+    "USA":            {champion_pct:0.50,  finalist_pct:1.89,  semi_pct:7.77,  strength:0.72},
+    "South Korea":    {champion_pct:0.48,  finalist_pct:1.73,  semi_pct:8.24,  strength:0.71},
+    "Senegal":        {champion_pct:0.35,  finalist_pct:1.36,  semi_pct:5.24,  strength:0.74},
+    "Canada":         {champion_pct:0.34,  finalist_pct:1.30,  semi_pct:6.17,  strength:0.69},
+    "Norway":         {champion_pct:0.26,  finalist_pct:1.21,  semi_pct:5.19,  strength:0.72},
+    "Austria":        {champion_pct:0.26,  finalist_pct:0.81,  semi_pct:3.44,  strength:0.71},
+    "Sweden":         {champion_pct:0.18,  finalist_pct:0.92,  semi_pct:4.75,  strength:0.70},
+    "Czechia":        {champion_pct:0.17,  finalist_pct:0.95,  semi_pct:4.89,  strength:0.68},
+    "Scotland":       {champion_pct:0.10,  finalist_pct:0.48,  semi_pct:3.97,  strength:0.65},
+    "Egypt":          {champion_pct:0.10,  finalist_pct:0.47,  semi_pct:2.79,  strength:0.66},
+    "Iran":           {champion_pct:0.10,  finalist_pct:0.69,  semi_pct:3.18,  strength:0.67},
+    "Australia":      {champion_pct:0.08,  finalist_pct:0.45,  semi_pct:3.65,  strength:0.66},
+    "DR Congo":       {champion_pct:0.04,  finalist_pct:0.13,  semi_pct:1.37,  strength:0.61},
+    "Algeria":        {champion_pct:0.03,  finalist_pct:0.30,  semi_pct:2.20,  strength:0.65},
+    "Bosnia and Herzegovina": {champion_pct:0.02, finalist_pct:0.15, semi_pct:1.65, strength:0.60},
+    "Ecuador":        {champion_pct:0.02,  finalist_pct:0.32,  semi_pct:2.05,  strength:0.64},
+    "Ivory Coast":    {champion_pct:0.02,  finalist_pct:0.32,  semi_pct:1.98,  strength:0.63},
+    "Iraq":           {champion_pct:0.02,  finalist_pct:0.08,  semi_pct:0.79,  strength:0.58},
+    "Paraguay":       {champion_pct:0.01,  finalist_pct:0.20,  semi_pct:1.59,  strength:0.61},
+    "Tunisia":        {champion_pct:0.01,  finalist_pct:0.07,  semi_pct:1.00,  strength:0.60},
+    "South Africa":   {champion_pct:0.01,  finalist_pct:0.09,  semi_pct:0.98,  strength:0.58},
+    "Ghana":          {champion_pct:0.01,  finalist_pct:0.07,  semi_pct:0.88,  strength:0.59},
+    "Uzbekistan":     {champion_pct:0.01,  finalist_pct:0.07,  semi_pct:0.50,  strength:0.57},
+    "Cape Verde":     {champion_pct:0.00,  finalist_pct:0.02,  semi_pct:0.52,  strength:0.55},
+    "Qatar":          {champion_pct:0.00,  finalist_pct:0.06,  semi_pct:0.88,  strength:0.56},
+    "Jordan":         {champion_pct:0.00,  finalist_pct:0.01,  semi_pct:0.26,  strength:0.54},
+    "Saudi Arabia":   {champion_pct:0.00,  finalist_pct:0.08,  semi_pct:0.87,  strength:0.58},
+    "Panama":         {champion_pct:0.00,  finalist_pct:0.08,  semi_pct:0.81,  strength:0.58},
+    "Curacao":        {champion_pct:0.00,  finalist_pct:0.01,  semi_pct:0.15,  strength:0.50},
+    "Haiti":          {champion_pct:0.00,  finalist_pct:0.02,  semi_pct:0.23,  strength:0.50},
+    "New Zealand":    {champion_pct:0.00,  finalist_pct:0.02,  semi_pct:0.11,  strength:0.52},
+  };
+  renderAll(prebuilt);
+  // No live data but still try again in 5 min
+  setTimeout(async () => {
+    const d = await fetchStrengths();
+    if (d && d.meta && d.meta.matches_played > 0) {
+      await loadFromLiveData(d);
+      startAutoRefresh();
+    }
+  }, 5 * 60 * 1000);
+});
+</script>
+</body>
+</html>
