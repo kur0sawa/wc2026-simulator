@@ -30,13 +30,13 @@ jobs:
       - name: Check if data changed
         id: diff
         run: |
-          git diff --quiet docs/data/strengths.json && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+          git add docs/data/strengths.json
+          git diff --staged --quiet && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
 
       - name: Commit and push if changed
         if: steps.diff.outputs.changed == 'true'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data/strengths.json
           git commit -m "auto: update strengths $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
