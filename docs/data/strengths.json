@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated_at": "2026-06-30T10:35:20.802071+00:00",
+    "updated_at": "2026-06-30T10:41:01.730171+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
     "matches_played": 73,
@@ -225,5 +225,23 @@
       "round": "Round of 32",
       "delta": 0.0051
     }
-  ]
+  ],
+  "eliminated": {
+    "South Africa": {
+      "round": "Round of 32",
+      "date": "2026-06-28"
+    },
+    "Germany": {
+      "round": "Round of 32",
+      "date": "2026-06-29"
+    },
+    "Netherlands": {
+      "round": "Round of 32",
+      "date": "2026-06-29"
+    },
+    "Japan": {
+      "round": "Round of 32",
+      "date": "2026-06-29"
+    }
+  }
 }
