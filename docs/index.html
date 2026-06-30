@@ -199,11 +199,6 @@ winner  = A if score_A > score_B else B<br><br>
         <div class="about-h">// Kenapa Spain / France Favorit?</div>
         <p class="about-p">Ini efek grup yang menarik — mereka tidak bertemu sampai babak knockout lanjut. Spain di Grup H bersama Cape Verde, Saudi Arabia, Uruguay. France di Grup I (Group of Death) bersama Senegal, Norway, Iraq. Tapi begitu lolos grup, bracket terbuka lebar.</p>
 
-        <div class="missing-box">
-          <strong>⚠ Tim yang tidak lolos ke WC 2026:</strong><br>
-          Italy (gagal playoff UEFA untuk ketiga kalinya — kalah adu penalti ke Bosnia), Poland (kalah dari Sweden), Denmark (kalah dari Czechia). Ini storyline terbesar turnamen ini.
-        </div>
-
         <div class="about-h" style="margin-top:16px">// Law of Large Numbers</div>
         <p class="about-p">Coba jalankan 1.000 vs 50.000 simulasi dan bandingkan hasilnya. Semakin banyak N, semakin stabil probabilitasnya — ini adalah <strong>Law of Large Numbers</strong> in action.</p>
       </div>
@@ -437,10 +432,20 @@ function renderAll(results) {
 
   const N=parseInt(document.getElementById('n-slider').value);
   const top=sc[0]; const dhorse=dh[0];
-  document.getElementById('insight').innerHTML=`
+  const eliminatedCount = Object.keys(ELIMINATED_TEAMS || {}).length;
+  const sarcasm = [
+    `${eliminatedCount} tim udah pulang duluan — mungkin mereka ada urusan lain.`,
+    `${eliminatedCount} tim resmi jadi penonton. Semoga tiketnya bisa di-refund.`,
+    `${eliminatedCount} tim tersingkir. Statistik tidak peduli perasaan.`,
+    `${eliminatedCount} tim pulang bawa kenangan, bukan piala.`,
+    `${eliminatedCount} tim sudah selesai urusannya — sisanya masih berjuang demi validasi data ini.`,
+  ];
+  const sarcasmLine = eliminatedCount > 0 ? sarcasm[Math.floor(Math.random() * sarcasm.length)] : '';
+
+  document.getElementById('insight').innerHTML = `
     <strong>${top[0]}</strong> juara di ${top[1].champion_pct}% dari ${N.toLocaleString()} simulasi.
     ${dhorse?`Dark horse terkuat: <strong>${dhorse[0]}</strong> dengan ${dhorse[1].champion_pct}% peluang juara meskipun strength rating-nya ${dhorse[1].strength}.`:''}
-    Italy tidak ada di sini — mereka gagal lolos untuk ketiga kalinya.
+    ${sarcasmLine ? `<br><br><span style="opacity:0.8">${sarcasmLine}</span>` : ''}
   `;
 }
 
