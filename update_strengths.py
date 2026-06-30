@@ -84,6 +84,35 @@ def parse_score(match):
         return int(ft[0]), int(ft[1])
     return None
 
+KNOCKOUT_ROUNDS = {"Round of 32", "Round of 16", "Quarter-final", "Semi-final", "Final", "Match for third place"}
+
+def detect_eliminated(matches):
+    """Cari tim yang kalah di babak knockout (otomatis tersingkir)."""
+    eliminated = {}
+    for m in matches:
+        if m.get("round") not in KNOCKOUT_ROUNDS:
+            continue
+        score = m.get("score")
+        if not score:
+            continue
+        ft = score.get("ft")
+        if not ft:
+            continue
+        g1, g2 = ft
+        t1, t2 = normalize(m.get("team1", "")), normalize(m.get("team2", ""))
+        pens = score.get("p")
+
+        if g1 == g2 and pens:
+            loser = t1 if pens[0] < pens[1] else t2
+        elif g1 > g2:
+            loser = t2
+        elif g2 > g1:
+            loser = t1
+        else:
+            continue
+
+        eliminated[loser] = {"round": m.get("round"), "date": m.get("date", "")}
+    return eliminated
 
 def update_strengths(matches):
     """
@@ -153,20 +182,21 @@ def update_strengths(matches):
     return strengths, played_count, results_log
 
 
-def save_output(strengths, played_count, results_log, matches_total):
+def save_output(strengths, played_count, results_log, matches_total, eliminated):
     """Save ke data/strengths.json"""
     played_matches = len(results_log)
     out = {
         "meta": {
-            "updated_at":    datetime.now(timezone.utc).isoformat(),
-            "source":        DATA_URL,
+            "updated_at": datetime.now(timezone.utc).isoformat(),
+            "source": DATA_URL,
             "matches_total": matches_total,
             "matches_played": played_matches,
             "matches_remaining": matches_total - played_matches,
         },
-        "strengths":    strengths,
+        "strengths": strengths,
         "played_count": played_count,
-        "results_log":  results_log[-20:],  # last 20 matches only
+        "results_log": results_log[-20:],
+        "eliminated": eliminated,
     }
 
     path = "docs/data/strengths.json"
@@ -191,9 +221,13 @@ def save_output(strengths, played_count, results_log, matches_total):
 if __name__ == "__main__":
     matches = fetch_matches()
     if not matches:
-        print("No match data, keeping existing strengths.json")
+        print("No match data.")
         exit(0)
-
+        
     strengths, played_count, results_log = update_strengths(matches)
-    save_output(strengths, played_count, results_log, len(matches))
+    eliminated = detect_eliminated(matches)
+    print(f"\n✗ Eliminated teams: {len(eliminated)}")
+    for t, info in eliminated.items():
+        print(f"  {t} — out in {info['round']}")
+    save_output(strengths, played_count, results_log, len(matches), eliminated)
     print("\nDone.")
