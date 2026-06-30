@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated_at": "2026-06-30T10:42:35.783862+00:00",
+    "updated_at": "2026-06-30T10:50:56.064197+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
     "matches_played": 73,
@@ -227,6 +227,70 @@
     }
   ],
   "eliminated": {
+    "South Korea": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Czechia": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Qatar": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Haiti": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Scotland": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Turkiye": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Curacao": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Tunisia": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Iran": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "New Zealand": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Saudi Arabia": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Uruguay": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Iraq": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Jordan": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Uzbekistan": {
+      "round": "Group Stage",
+      "date": ""
+    },
+    "Panama": {
+      "round": "Group Stage",
+      "date": ""
+    },
     "South Africa": {
       "round": "Round of 32",
       "date": "2026-06-28"
