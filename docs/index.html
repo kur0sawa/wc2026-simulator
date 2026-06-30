@@ -527,18 +527,46 @@ function startAutoRefresh() {
   }, 30 * 60 * 1000); // 30 menit
 }
 
+let ELIMINATED_TEAMS = {};
+
 async function loadFromLiveData(data) {
   const strengths = data.strengths || {};
+  const eliminated = data.eliminated || {};
+  ELIMINATED_TEAMS = eliminated;
+
   showLiveBanner(data.meta || {});
   showRecentResults(data.results_log || []);
+  showEliminatedBanner(eliminated);
 
   // Update TEAMS object dengan live strengths
   for (const [team, val] of Object.entries(strengths)) {
     if (TEAMS.hasOwnProperty(team)) TEAMS[team] = val;
   }
 
-  // Run simulation dengan live strengths
+  // Hapus tim yang sudah tersingkir dari pool simulasi
+  for (const team of Object.keys(eliminated)) {
+    delete TEAMS[team];
+  }
+
+  // Run simulation dengan live strengths (tanpa tim tersingkir)
   runSim();
+}
+
+function showEliminatedBanner(eliminated) {
+  const count = Object.keys(eliminated).length;
+  if (count === 0) return;
+  const sidebar = document.querySelector('.sidebar');
+  const div = document.createElement('div');
+  div.style.cssText = 'margin-top:14px; padding:12px; background:rgba(255,80,80,0.04); border:1px solid rgba(255,80,80,0.15); border-radius:6px';
+  div.innerHTML = `
+    <div style="font-family:var(--mono);font-size:9px;color:#FF6B6B;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px">✗ Tersingkir (${count})</div>
+    ${Object.entries(eliminated).map(([t, info]) => `
+      <div style="font-size:11px;padding:3px 0;color:var(--muted)">
+        ${t} <span style="font-family:var(--mono);font-size:9px;opacity:0.7">— ${info.round}</span>
+      </div>
+    `).join('')}
+  `;
+  sidebar.appendChild(div);
 }
 
 // Load with real pre-simulated data
