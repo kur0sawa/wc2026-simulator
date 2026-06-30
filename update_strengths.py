@@ -114,6 +114,65 @@ def detect_eliminated(matches):
         eliminated[loser] = {"round": m.get("round"), "date": m.get("date", "")}
     return eliminated
 
+def detect_group_stage_eliminations(matches):
+    """
+    Cek apakah fase grup sudah selesai (semua tim main 3 match).
+    Kalau ya, hitung top-2 + 8 best third place, sisanya tersingkir.
+    """
+    group_matches = [m for m in matches if (m.get("round") or "").startswith("Matchday") and m.get("score")]
+
+    group_eliminated = {}
+    for gname, group_data in GROUPS.items():
+        teams = group_data if isinstance(group_data, list) else group_data
+        # (sesuaikan kalau GROUPS struktur beda — di script kita GROUPS values langsung list)
+
+    pts, gf, ga, played = {}, {}, {}, {}
+    for teams in GROUPS.values():
+        for t in teams:
+            pts[t] = 0; gf[t] = 0; ga[t] = 0; played[t] = 0
+
+    for m in group_matches:
+        t1, t2 = normalize(m.get("team1", "")), normalize(m.get("team2", ""))
+        if t1 not in pts or t2 not in pts:
+            continue
+        ft = m["score"].get("ft")
+        if not ft:
+            continue
+        g1, g2 = ft
+        gf[t1] += g1; ga[t1] += g2; gf[t2] += g2; ga[t2] += g1
+        played[t1] += 1; played[t2] += 1
+        if g1 > g2: pts[t1] += 3
+        elif g2 > g1: pts[t2] += 3
+        else: pts[t1] += 1; pts[t2] += 1
+
+    qualified_top2 = []
+    third_candidates = []
+    all_complete = True
+
+    for gname, teams in GROUPS.items():
+        if not all(played.get(t, 0) >= 3 for t in teams):
+            all_complete = False
+            continue
+        gd = {t: gf[t] - ga[t] for t in teams}
+        ranked = sorted(teams, key=lambda t: (pts[t], gd[t], gf[t]), reverse=True)
+        qualified_top2.extend(ranked[:2])
+        third_candidates.append((ranked[2], pts[ranked[2]], gd[ranked[2]]))
+
+    if not third_candidates:
+        return {}
+
+    third_candidates.sort(key=lambda x: (x[1], x[2]), reverse=True)
+    best_8_third = [t[0] for t in third_candidates[:8]]
+    qualified_32 = set(qualified_top2 + best_8_third)
+
+    eliminated = {}
+    for teams in GROUPS.values():
+        for t in teams:
+            if played.get(t, 0) >= 3 and t not in qualified_32:
+                eliminated[t] = {"round": "Group Stage", "date": ""}
+
+    return eliminated
+
 def update_strengths(matches):
     """
     Bayesian-style update: setelah setiap match, strength tim diupdate
@@ -223,9 +282,11 @@ if __name__ == "__main__":
     if not matches:
         print("No match data.")
         exit(0)
-        
     strengths, played_count, results_log = update_strengths(matches)
-    eliminated = detect_eliminated(matches)
+    eliminated_knockout = detect_eliminated(matches)
+    eliminated_groups   = detect_group_stage_eliminations(matches)
+    eliminated = {**eliminated_groups, **eliminated_knockout}
+
     print(f"\n✗ Eliminated teams: {len(eliminated)}")
     for t, info in eliminated.items():
         print(f"  {t} — out in {info['round']}")
