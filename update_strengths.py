@@ -168,7 +168,7 @@ def save_output(strengths, played_count, results_log, matches_total):
         "results_log":  results_log[-20:],  # last 20 matches only
     }
 
-    path = "data/strengths.json"
+    path = "docs/data/strengths.json"
     with open(path, "w") as f:
         json.dump(out, f, indent=2)
     print(f"✓ Saved {path} ({played_matches}/{matches_total} matches played)")
