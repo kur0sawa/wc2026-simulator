@@ -1,0 +1,229 @@
+{
+  "meta": {
+    "updated_at": "2026-06-30T10:35:20.802071+00:00",
+    "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
+    "matches_total": 104,
+    "matches_played": 73,
+    "matches_remaining": 31
+  },
+  "strengths": {
+    "France": 0.9572050176720539,
+    "Spain": 0.9285298633284034,
+    "Argentina": 0.933448837206259,
+    "Brazil": 0.9117825311839711,
+    "England": 0.8905731289150494,
+    "Portugal": 0.8720498880530654,
+    "Germany": 0.8253028424702854,
+    "Netherlands": 0.8432588805476785,
+    "Belgium": 0.8217948821050092,
+    "Morocco": 0.8151196680248913,
+    "Croatia": 0.7895405317874608,
+    "Colombia": 0.7944668711816674,
+    "Uruguay": 0.7463193011707118,
+    "Switzerland": 0.7641935218327408,
+    "Senegal": 0.7343551390106541,
+    "Japan": 0.7489502058518066,
+    "Turkiye": 0.7139438287774987,
+    "Mexico": 0.7593742101723686,
+    "USA": 0.7321636655893996,
+    "Norway": 0.7300545725287662,
+    "South Korea": 0.6971752052057737,
+    "Austria": 0.708584417727315,
+    "Canada": 0.6979830466648392,
+    "Czechia": 0.6563331034533707,
+    "Iran": 0.6700676274544093,
+    "Egypt": 0.6722839838707168,
+    "Australia": 0.6621418947551252,
+    "Scotland": 0.6400140004045192,
+    "Algeria": 0.648075308646776,
+    "Ecuador": 0.640839513943446,
+    "Ivory Coast": 0.6432319929547855,
+    "DR Congo": 0.620678869840723,
+    "Paraguay": 0.6165355668403931,
+    "Tunisia": 0.581755980708144,
+    "Bosnia and Herzegovina": 0.6020741274304946,
+    "Ghana": 0.599387961921908,
+    "South Africa": 0.5810009944140827,
+    "Saudi Arabia": 0.5744339450017782,
+    "Iraq": 0.5483852707885257,
+    "Panama": 0.5604983773755818,
+    "Uzbekistan": 0.5428043709245443,
+    "Qatar": 0.5418657908263296,
+    "Cape Verde": 0.5607168904991067,
+    "Jordan": 0.5198914364196501,
+    "New Zealand": 0.5058535065698648,
+    "Haiti": 0.47911873327898924,
+    "Curacao": 0.4858406946690665
+  },
+  "played_count": {
+    "Mexico": 3,
+    "South Africa": 4,
+    "South Korea": 3,
+    "Czechia": 3,
+    "Canada": 4,
+    "Bosnia and Herzegovina": 3,
+    "Qatar": 3,
+    "Switzerland": 3,
+    "Brazil": 4,
+    "Morocco": 4,
+    "Haiti": 3,
+    "Scotland": 3,
+    "USA": 3,
+    "Paraguay": 4,
+    "Australia": 3,
+    "Turkiye": 3,
+    "Germany": 4,
+    "Curacao": 3,
+    "Ivory Coast": 3,
+    "Ecuador": 3,
+    "Netherlands": 3,
+    "Japan": 3,
+    "Tunisia": 2,
+    "Belgium": 3,
+    "Egypt": 3,
+    "Iran": 3,
+    "New Zealand": 3,
+    "Spain": 3,
+    "Cape Verde": 3,
+    "Saudi Arabia": 3,
+    "Uruguay": 3,
+    "France": 3,
+    "Senegal": 3,
+    "Iraq": 3,
+    "Norway": 3,
+    "Argentina": 3,
+    "Algeria": 3,
+    "Austria": 3,
+    "Jordan": 3,
+    "Portugal": 3,
+    "DR Congo": 3,
+    "Uzbekistan": 3,
+    "Colombia": 3,
+    "England": 3,
+    "Croatia": 3,
+    "Ghana": 3,
+    "Panama": 3
+  },
+  "results_log": [
+    {
+      "match": "Argentina 2-0 Austria",
+      "date": "2026-06-22",
+      "round": "Matchday 12",
+      "delta": 0.0074
+    },
+    {
+      "match": "Jordan 1-2 Algeria",
+      "date": "2026-06-22",
+      "round": "Matchday 12",
+      "delta": -0.006
+    },
+    {
+      "match": "Algeria 3-3 Austria",
+      "date": "2026-06-27",
+      "round": "Matchday 17",
+      "delta": 0.0019
+    },
+    {
+      "match": "Jordan 1-3 Argentina",
+      "date": "2026-06-27",
+      "round": "Matchday 17",
+      "delta": -0.0062
+    },
+    {
+      "match": "Portugal 1-1 DR Congo",
+      "date": "2026-06-17",
+      "round": "Matchday 7",
+      "delta": -0.0052
+    },
+    {
+      "match": "Uzbekistan 1-3 Colombia",
+      "date": "2026-06-17",
+      "round": "Matchday 7",
+      "delta": -0.0073
+    },
+    {
+      "match": "Portugal 5-0 Uzbekistan",
+      "date": "2026-06-23",
+      "round": "Matchday 13",
+      "delta": 0.0096
+    },
+    {
+      "match": "Colombia 1-0 DR Congo",
+      "date": "2026-06-23",
+      "round": "Matchday 13",
+      "delta": 0.0048
+    },
+    {
+      "match": "Colombia 0-0 Portugal",
+      "date": "2026-06-27",
+      "round": "Matchday 17",
+      "delta": 0.0023
+    },
+    {
+      "match": "DR Congo 3-1 Uzbekistan",
+      "date": "2026-06-27",
+      "round": "Matchday 17",
+      "delta": 0.0103
+    },
+    {
+      "match": "England 4-2 Croatia",
+      "date": "2026-06-17",
+      "round": "Matchday 7",
+      "delta": 0.0095
+    },
+    {
+      "match": "Ghana 1-0 Panama",
+      "date": "2026-06-17",
+      "round": "Matchday 7",
+      "delta": 0.0087
+    },
+    {
+      "match": "England 0-0 Ghana",
+      "date": "2026-06-23",
+      "round": "Matchday 13",
+      "delta": -0.0054
+    },
+    {
+      "match": "Panama 0-1 Croatia",
+      "date": "2026-06-23",
+      "round": "Matchday 13",
+      "delta": -0.0043
+    },
+    {
+      "match": "Panama 0-2 England",
+      "date": "2026-06-27",
+      "round": "Matchday 17",
+      "delta": -0.0065
+    },
+    {
+      "match": "Croatia 2-1 Ghana",
+      "date": "2026-06-27",
+      "round": "Matchday 17",
+      "delta": 0.0047
+    },
+    {
+      "match": "South Africa 0-1 Canada",
+      "date": "2026-06-28",
+      "round": "Round of 32",
+      "delta": -0.0061
+    },
+    {
+      "match": "Germany 1-1 Paraguay",
+      "date": "2026-06-29",
+      "round": "Round of 32",
+      "delta": -0.0048
+    },
+    {
+      "match": "Netherlands 1-1 Morocco",
+      "date": "2026-06-29",
+      "round": "Round of 32",
+      "delta": -0.0009
+    },
+    {
+      "match": "Brazil 2-1 Japan",
+      "date": "2026-06-29",
+      "round": "Round of 32",
+      "delta": 0.0051
+    }
+  ]
+}
