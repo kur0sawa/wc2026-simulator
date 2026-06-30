@@ -136,11 +136,6 @@ def detect_group_stage_eliminations(matches):
     """
     group_matches = [m for m in matches if (m.get("round") or "").startswith("Matchday") and m.get("score")]
 
-    group_eliminated = {}
-    for gname, group_data in GROUPS.items():
-        teams = group_data if isinstance(group_data, list) else group_data
-        # (sesuaikan kalau GROUPS struktur beda — di script kita GROUPS values langsung list)
-
     pts, gf, ga, played = {}, {}, {}, {}
     for teams in GROUPS.values():
         for t in teams:
