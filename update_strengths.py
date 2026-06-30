@@ -170,6 +170,7 @@ def save_output(strengths, played_count, results_log, matches_total):
     }
 
     path = "docs/data/strengths.json"
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
         json.dump(out, f, indent=2)
     print(f"✓ Saved {path} ({played_matches}/{matches_total} matches played)")
