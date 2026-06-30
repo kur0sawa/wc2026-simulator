@@ -1,10 +1,10 @@
 {
   "meta": {
-    "updated_at": "2026-06-30T17:20:51.871222+00:00",
+    "updated_at": "2026-06-30T19:14:07.147126+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 73,
-    "matches_remaining": 31
+    "matches_played": 74,
+    "matches_remaining": 30
   },
   "strengths": {
     "France": 0.9572050176720539,
@@ -26,7 +26,7 @@
     "Turkiye": 0.7139438287774987,
     "Mexico": 0.7593742101723686,
     "USA": 0.7321636655893996,
-    "Norway": 0.7300545725287662,
+    "Norway": 0.7366020558615112,
     "South Korea": 0.6971752052057737,
     "Austria": 0.708584417727315,
     "Canada": 0.6979830466648392,
@@ -37,7 +37,7 @@
     "Scotland": 0.6400140004045192,
     "Algeria": 0.648075308646776,
     "Ecuador": 0.640839513943446,
-    "Ivory Coast": 0.6432319929547855,
+    "Ivory Coast": 0.6366845096220405,
     "DR Congo": 0.620678869840723,
     "Paraguay": 0.6165355668403931,
     "Tunisia": 0.581755980708144,
@@ -74,7 +74,7 @@
     "Turkiye": 3,
     "Germany": 4,
     "Curacao": 3,
-    "Ivory Coast": 3,
+    "Ivory Coast": 4,
     "Ecuador": 3,
     "Netherlands": 3,
     "Japan": 3,
@@ -90,7 +90,7 @@
     "France": 3,
     "Senegal": 3,
     "Iraq": 3,
-    "Norway": 3,
+    "Norway": 4,
     "Argentina": 3,
     "Algeria": 3,
     "Austria": 3,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Argentina 2-0 Austria",
-      "date": "2026-06-22",
-      "round": "Matchday 12",
-      "delta": 0.0074
-    },
     {
       "match": "Jordan 1-2 Algeria",
       "date": "2026-06-22",
@@ -224,6 +218,12 @@
       "date": "2026-06-29",
       "round": "Round of 32",
       "delta": 0.0051
+    },
+    {
+      "match": "Ivory Coast 1-2 Norway",
+      "date": "2026-06-30",
+      "round": "Round of 32",
+      "delta": -0.0065
     }
   ],
   "eliminated": {
@@ -306,6 +306,10 @@
     "Japan": {
       "round": "Round of 32",
       "date": "2026-06-29"
+    },
+    "Ivory Coast": {
+      "round": "Round of 32",
+      "date": "2026-06-30"
     }
   }
 }
