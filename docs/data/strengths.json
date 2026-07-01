@@ -1,10 +1,10 @@
 {
   "meta": {
-    "updated_at": "2026-07-01T21:56:42.634274+00:00",
+    "updated_at": "2026-07-01T23:07:15.089511+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 76,
-    "matches_remaining": 28
+    "matches_played": 77,
+    "matches_remaining": 27
   },
   "strengths": {
     "France": 0.9572050176720539,
@@ -15,13 +15,13 @@
     "Portugal": 0.8720498880530654,
     "Germany": 0.8253028424702854,
     "Netherlands": 0.8432588805476785,
-    "Belgium": 0.8217948821050092,
+    "Belgium": 0.8193269634569416,
     "Morocco": 0.8151196680248913,
     "Croatia": 0.7895405317874608,
     "Colombia": 0.7944668711816674,
     "Uruguay": 0.7463193011707118,
     "Switzerland": 0.7641935218327408,
-    "Senegal": 0.7343551390106541,
+    "Senegal": 0.7368230576587217,
     "Japan": 0.7489502058518066,
     "Turkiye": 0.7139438287774987,
     "Mexico": 0.7681833160986569,
@@ -79,7 +79,7 @@
     "Netherlands": 3,
     "Japan": 3,
     "Tunisia": 2,
-    "Belgium": 3,
+    "Belgium": 4,
     "Egypt": 3,
     "Iran": 3,
     "New Zealand": 3,
@@ -88,7 +88,7 @@
     "Saudi Arabia": 3,
     "Uruguay": 3,
     "France": 3,
-    "Senegal": 3,
+    "Senegal": 4,
     "Iraq": 3,
     "Norway": 4,
     "Argentina": 3,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Jordan 1-3 Argentina",
-      "date": "2026-06-27",
-      "round": "Matchday 17",
-      "delta": -0.0062
-    },
     {
       "match": "Portugal 1-1 DR Congo",
       "date": "2026-06-17",
@@ -224,6 +218,12 @@
       "date": "2026-07-01",
       "round": "Round of 32",
       "delta": 0.0038
+    },
+    {
+      "match": "Belgium 2-2 Senegal",
+      "date": "2026-07-01",
+      "round": "Round of 32",
+      "delta": -0.0025
     }
   ],
   "eliminated": {
