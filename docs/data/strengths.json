@@ -1,10 +1,10 @@
 {
   "meta": {
-    "updated_at": "2026-07-01T07:12:47.197089+00:00",
+    "updated_at": "2026-07-01T10:52:10.578092+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 74,
-    "matches_remaining": 30
+    "matches_played": 75,
+    "matches_remaining": 29
   },
   "strengths": {
     "France": 0.9572050176720539,
@@ -24,7 +24,7 @@
     "Senegal": 0.7343551390106541,
     "Japan": 0.7489502058518066,
     "Turkiye": 0.7139438287774987,
-    "Mexico": 0.7593742101723686,
+    "Mexico": 0.7681833160986569,
     "USA": 0.7321636655893996,
     "Norway": 0.7366020558615112,
     "South Korea": 0.6971752052057737,
@@ -36,7 +36,7 @@
     "Australia": 0.6621418947551252,
     "Scotland": 0.6400140004045192,
     "Algeria": 0.648075308646776,
-    "Ecuador": 0.640839513943446,
+    "Ecuador": 0.6320304080171577,
     "Ivory Coast": 0.6366845096220405,
     "DR Congo": 0.620678869840723,
     "Paraguay": 0.6165355668403931,
@@ -56,7 +56,7 @@
     "Curacao": 0.4858406946690665
   },
   "played_count": {
-    "Mexico": 3,
+    "Mexico": 4,
     "South Africa": 4,
     "South Korea": 3,
     "Czechia": 3,
@@ -75,7 +75,7 @@
     "Germany": 4,
     "Curacao": 3,
     "Ivory Coast": 4,
-    "Ecuador": 3,
+    "Ecuador": 4,
     "Netherlands": 3,
     "Japan": 3,
     "Tunisia": 2,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Jordan 1-2 Algeria",
-      "date": "2026-06-22",
-      "round": "Matchday 12",
-      "delta": -0.006
-    },
     {
       "match": "Algeria 3-3 Austria",
       "date": "2026-06-27",
@@ -224,6 +218,12 @@
       "date": "2026-06-30",
       "round": "Round of 32",
       "delta": -0.0065
+    },
+    {
+      "match": "Mexico 2-0 Ecuador",
+      "date": "2026-06-30",
+      "round": "Round of 32",
+      "delta": 0.0088
     }
   ],
   "eliminated": {
@@ -312,6 +312,10 @@
       "date": "2026-06-30"
     },
     "Ivory Coast": {
+      "round": "Round of 32",
+      "date": "2026-06-30"
+    },
+    "Ecuador": {
       "round": "Round of 32",
       "date": "2026-06-30"
     }
