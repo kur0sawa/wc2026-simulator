@@ -1,14 +1,14 @@
 {
   "meta": {
-    "updated_at": "2026-07-02T20:14:14.921477+00:00",
+    "updated_at": "2026-07-02T21:40:31.027847+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 78,
-    "matches_remaining": 26
+    "matches_played": 79,
+    "matches_remaining": 25
   },
   "strengths": {
     "France": 0.9572050176720539,
-    "Spain": 0.9285298633284034,
+    "Spain": 0.9387274572065757,
     "Argentina": 0.933448837206259,
     "Brazil": 0.9117825311839711,
     "England": 0.8943295582774466,
@@ -28,7 +28,7 @@
     "USA": 0.740731837960628,
     "Norway": 0.7366020558615112,
     "South Korea": 0.6971752052057737,
-    "Austria": 0.708584417727315,
+    "Austria": 0.6983868238491426,
     "Canada": 0.6979830466648392,
     "Czechia": 0.6563331034533707,
     "Iran": 0.6700676274544093,
@@ -83,7 +83,7 @@
     "Egypt": 3,
     "Iran": 3,
     "New Zealand": 3,
-    "Spain": 3,
+    "Spain": 4,
     "Cape Verde": 3,
     "Saudi Arabia": 3,
     "Uruguay": 3,
@@ -93,7 +93,7 @@
     "Norway": 4,
     "Argentina": 3,
     "Algeria": 3,
-    "Austria": 3,
+    "Austria": 4,
     "Jordan": 3,
     "Portugal": 3,
     "DR Congo": 4,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Uzbekistan 1-3 Colombia",
-      "date": "2026-06-17",
-      "round": "Matchday 7",
-      "delta": -0.0073
-    },
     {
       "match": "Portugal 5-0 Uzbekistan",
       "date": "2026-06-23",
@@ -224,6 +218,12 @@
       "date": "2026-07-01",
       "round": "Round of 32",
       "delta": -0.0025
+    },
+    {
+      "match": "Spain 3-0 Austria",
+      "date": "2026-07-02",
+      "round": "Round of 32",
+      "delta": 0.0102
     }
   ],
   "eliminated": {
@@ -326,6 +326,10 @@
     "Bosnia and Herzegovina": {
       "round": "Round of 32",
       "date": "2026-07-01"
+    },
+    "Austria": {
+      "round": "Round of 32",
+      "date": "2026-07-02"
     }
   }
 }
