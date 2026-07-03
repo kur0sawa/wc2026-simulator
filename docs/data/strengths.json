@@ -1,10 +1,10 @@
 {
   "meta": {
-    "updated_at": "2026-07-03T20:16:16.640595+00:00",
+    "updated_at": "2026-07-03T21:37:41.252090+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 81,
-    "matches_remaining": 23
+    "matches_played": 82,
+    "matches_remaining": 22
   },
   "strengths": {
     "France": 0.9572050176720539,
@@ -32,8 +32,8 @@
     "Canada": 0.6979830466648392,
     "Czechia": 0.6563331034533707,
     "Iran": 0.6700676274544093,
-    "Egypt": 0.6722839838707168,
-    "Australia": 0.6621418947551252,
+    "Egypt": 0.6719799817380756,
+    "Australia": 0.6624458968877663,
     "Scotland": 0.6400140004045192,
     "Algeria": 0.6392138780227855,
     "Ecuador": 0.6320304080171577,
@@ -70,7 +70,7 @@
     "Scotland": 3,
     "USA": 4,
     "Paraguay": 4,
-    "Australia": 3,
+    "Australia": 4,
     "Turkiye": 3,
     "Germany": 4,
     "Curacao": 3,
@@ -80,7 +80,7 @@
     "Japan": 3,
     "Tunisia": 2,
     "Belgium": 4,
-    "Egypt": 3,
+    "Egypt": 4,
     "Iran": 3,
     "New Zealand": 3,
     "Spain": 4,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Colombia 0-0 Portugal",
-      "date": "2026-06-27",
-      "round": "Matchday 17",
-      "delta": 0.0023
-    },
     {
       "match": "DR Congo 3-1 Uzbekistan",
       "date": "2026-06-27",
@@ -224,6 +218,12 @@
       "date": "2026-07-02",
       "round": "Round of 32",
       "delta": 0.0089
+    },
+    {
+      "match": "Australia 1-1 Egypt",
+      "date": "2026-07-03",
+      "round": "Round of 32",
+      "delta": 0.0003
     }
   ],
   "eliminated": {
@@ -338,6 +338,10 @@
     "Algeria": {
       "round": "Round of 32",
       "date": "2026-07-02"
+    },
+    "Australia": {
+      "round": "Round of 32",
+      "date": "2026-07-03"
     }
   }
 }
