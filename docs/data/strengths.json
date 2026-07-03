@@ -1,10 +1,10 @@
 {
   "meta": {
-    "updated_at": "2026-07-02T23:57:08.764808+00:00",
+    "updated_at": "2026-07-03T02:29:16.117866+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 79,
-    "matches_remaining": 25
+    "matches_played": 80,
+    "matches_remaining": 24
   },
   "strengths": {
     "France": 0.9572050176720539,
@@ -12,12 +12,12 @@
     "Argentina": 0.933448837206259,
     "Brazil": 0.9117825311839711,
     "England": 0.8943295582774466,
-    "Portugal": 0.8720498880530654,
+    "Portugal": 0.8787060901599153,
     "Germany": 0.8253028424702854,
     "Netherlands": 0.8432588805476785,
     "Belgium": 0.8193269634569416,
     "Morocco": 0.8151196680248913,
-    "Croatia": 0.7895405317874608,
+    "Croatia": 0.7828843296806108,
     "Colombia": 0.7944668711816674,
     "Uruguay": 0.7463193011707118,
     "Switzerland": 0.7641935218327408,
@@ -95,22 +95,16 @@
     "Algeria": 3,
     "Austria": 4,
     "Jordan": 3,
-    "Portugal": 3,
+    "Portugal": 4,
     "DR Congo": 4,
     "Uzbekistan": 3,
     "Colombia": 3,
     "England": 4,
-    "Croatia": 3,
+    "Croatia": 4,
     "Ghana": 3,
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Portugal 5-0 Uzbekistan",
-      "date": "2026-06-23",
-      "round": "Matchday 13",
-      "delta": 0.0096
-    },
     {
       "match": "Colombia 1-0 DR Congo",
       "date": "2026-06-23",
@@ -220,6 +214,12 @@
       "delta": -0.0025
     },
     {
+      "match": "Portugal 2-1 Croatia",
+      "date": "2026-07-02",
+      "round": "Round of 32",
+      "delta": 0.0067
+    },
+    {
       "match": "Spain 3-0 Austria",
       "date": "2026-07-02",
       "round": "Round of 32",
@@ -326,6 +326,10 @@
     "Bosnia and Herzegovina": {
       "round": "Round of 32",
       "date": "2026-07-01"
+    },
+    "Croatia": {
+      "round": "Round of 32",
+      "date": "2026-07-02"
     },
     "Austria": {
       "round": "Round of 32",
