@@ -1,15 +1,15 @@
 {
   "meta": {
-    "updated_at": "2026-07-03T23:56:20.720249+00:00",
+    "updated_at": "2026-07-04T02:10:07.800654+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 82,
-    "matches_remaining": 22
+    "matches_played": 83,
+    "matches_remaining": 21
   },
   "strengths": {
     "France": 0.9572050176720539,
     "Spain": 0.9387274572065757,
-    "Argentina": 0.933448837206259,
+    "Argentina": 0.9277307421802276,
     "Brazil": 0.9117825311839711,
     "England": 0.8943295582774466,
     "Portugal": 0.8787060901599153,
@@ -49,7 +49,7 @@
     "Panama": 0.5604983773755818,
     "Uzbekistan": 0.5428043709245443,
     "Qatar": 0.5418657908263296,
-    "Cape Verde": 0.5607168904991067,
+    "Cape Verde": 0.5664349855251382,
     "Jordan": 0.5198914364196501,
     "New Zealand": 0.5058535065698648,
     "Haiti": 0.47911873327898924,
@@ -84,14 +84,14 @@
     "Iran": 3,
     "New Zealand": 3,
     "Spain": 4,
-    "Cape Verde": 3,
+    "Cape Verde": 4,
     "Saudi Arabia": 3,
     "Uruguay": 3,
     "France": 3,
     "Senegal": 4,
     "Iraq": 3,
     "Norway": 4,
-    "Argentina": 3,
+    "Argentina": 4,
     "Algeria": 4,
     "Austria": 4,
     "Jordan": 3,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "DR Congo 3-1 Uzbekistan",
-      "date": "2026-06-27",
-      "round": "Matchday 17",
-      "delta": 0.0103
-    },
     {
       "match": "England 4-2 Croatia",
       "date": "2026-06-17",
@@ -218,6 +212,12 @@
       "date": "2026-07-02",
       "round": "Round of 32",
       "delta": 0.0089
+    },
+    {
+      "match": "Argentina 1-1 Cape Verde",
+      "date": "2026-07-03",
+      "round": "Round of 32",
+      "delta": -0.0057
     },
     {
       "match": "Australia 1-1 Egypt",
