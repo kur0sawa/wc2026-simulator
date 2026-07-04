@@ -1,10 +1,10 @@
 {
   "meta": {
-    "updated_at": "2026-07-04T02:10:07.800654+00:00",
+    "updated_at": "2026-07-04T05:57:18.045387+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 83,
-    "matches_remaining": 21
+    "matches_played": 84,
+    "matches_remaining": 20
   },
   "strengths": {
     "France": 0.9572050176720539,
@@ -18,7 +18,7 @@
     "Belgium": 0.8193269634569416,
     "Morocco": 0.8151196680248913,
     "Croatia": 0.7828843296806108,
-    "Colombia": 0.7944668711816674,
+    "Colombia": 0.7989604792756034,
     "Uruguay": 0.7463193011707118,
     "Switzerland": 0.7730549524567313,
     "Senegal": 0.7368230576587217,
@@ -42,7 +42,7 @@
     "Paraguay": 0.6165355668403931,
     "Tunisia": 0.581755980708144,
     "Bosnia and Herzegovina": 0.5935059550592662,
-    "Ghana": 0.599387961921908,
+    "Ghana": 0.594894353827972,
     "South Africa": 0.5810009944140827,
     "Saudi Arabia": 0.5744339450017782,
     "Iraq": 0.5483852707885257,
@@ -98,19 +98,13 @@
     "Portugal": 4,
     "DR Congo": 4,
     "Uzbekistan": 3,
-    "Colombia": 3,
+    "Colombia": 4,
     "England": 4,
     "Croatia": 4,
-    "Ghana": 3,
+    "Ghana": 4,
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "England 4-2 Croatia",
-      "date": "2026-06-17",
-      "round": "Matchday 7",
-      "delta": 0.0095
-    },
     {
       "match": "Ghana 1-0 Panama",
       "date": "2026-06-17",
@@ -218,6 +212,12 @@
       "date": "2026-07-03",
       "round": "Round of 32",
       "delta": -0.0057
+    },
+    {
+      "match": "Colombia 1-0 Ghana",
+      "date": "2026-07-03",
+      "round": "Round of 32",
+      "delta": 0.0045
     },
     {
       "match": "Australia 1-1 Egypt",
@@ -338,6 +338,10 @@
     "Algeria": {
       "round": "Round of 32",
       "date": "2026-07-02"
+    },
+    "Ghana": {
+      "round": "Round of 32",
+      "date": "2026-07-03"
     },
     "Australia": {
       "round": "Round of 32",
