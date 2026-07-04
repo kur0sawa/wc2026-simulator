@@ -1,13 +1,13 @@
 {
   "meta": {
-    "updated_at": "2026-07-04T22:25:05.057183+00:00",
+    "updated_at": "2026-07-04T23:28:01.417699+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 85,
-    "matches_remaining": 19
+    "matches_played": 86,
+    "matches_remaining": 18
   },
   "strengths": {
-    "France": 0.9572050176720539,
+    "France": 0.9605900604553018,
     "Spain": 0.9387274572065757,
     "Argentina": 0.9277307421802276,
     "Brazil": 0.9117825311839711,
@@ -39,7 +39,7 @@
     "Ecuador": 0.6320304080171577,
     "Ivory Coast": 0.6366845096220405,
     "DR Congo": 0.6169224404783257,
-    "Paraguay": 0.6165355668403931,
+    "Paraguay": 0.6131505240571452,
     "Tunisia": 0.581755980708144,
     "Bosnia and Herzegovina": 0.5935059550592662,
     "Ghana": 0.594894353827972,
@@ -69,7 +69,7 @@
     "Haiti": 3,
     "Scotland": 3,
     "USA": 4,
-    "Paraguay": 4,
+    "Paraguay": 5,
     "Australia": 4,
     "Turkiye": 3,
     "Germany": 4,
@@ -87,7 +87,7 @@
     "Cape Verde": 4,
     "Saudi Arabia": 3,
     "Uruguay": 3,
-    "France": 3,
+    "France": 4,
     "Senegal": 4,
     "Iraq": 3,
     "Norway": 4,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "England 0-0 Ghana",
-      "date": "2026-06-23",
-      "round": "Matchday 13",
-      "delta": -0.0054
-    },
     {
       "match": "Panama 0-1 Croatia",
       "date": "2026-06-23",
@@ -218,6 +212,12 @@
       "date": "2026-07-03",
       "round": "Round of 32",
       "delta": 0.0003
+    },
+    {
+      "match": "Paraguay 0-1 France",
+      "date": "2026-07-04",
+      "round": "Round of 16",
+      "delta": -0.0034
     },
     {
       "match": "Canada 0-3 Morocco",
@@ -346,6 +346,10 @@
     "Australia": {
       "round": "Round of 32",
       "date": "2026-07-03"
+    },
+    "Paraguay": {
+      "round": "Round of 16",
+      "date": "2026-07-04"
     },
     "Canada": {
       "round": "Round of 16",
