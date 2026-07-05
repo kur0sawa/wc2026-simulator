@@ -1,16 +1,16 @@
 {
   "meta": {
-    "updated_at": "2026-07-05T21:50:02.407207+00:00",
+    "updated_at": "2026-07-05T22:51:00.423513+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 86,
-    "matches_remaining": 18
+    "matches_played": 87,
+    "matches_remaining": 17
   },
   "strengths": {
     "France": 0.9605900604553018,
     "Spain": 0.9387274572065757,
     "Argentina": 0.9277307421802276,
-    "Brazil": 0.9117825311839711,
+    "Brazil": 0.8985563677095503,
     "England": 0.8943295582774466,
     "Portugal": 0.8787060901599153,
     "Germany": 0.8253028424702854,
@@ -26,7 +26,7 @@
     "Turkiye": 0.7139438287774987,
     "Mexico": 0.7681833160986569,
     "USA": 0.740731837960628,
-    "Norway": 0.7366020558615112,
+    "Norway": 0.749828219335932,
     "South Korea": 0.6971752052057737,
     "Austria": 0.6983868238491426,
     "Canada": 0.6861437491824725,
@@ -64,7 +64,7 @@
     "Bosnia and Herzegovina": 4,
     "Qatar": 3,
     "Switzerland": 4,
-    "Brazil": 4,
+    "Brazil": 5,
     "Morocco": 5,
     "Haiti": 3,
     "Scotland": 3,
@@ -90,7 +90,7 @@
     "France": 4,
     "Senegal": 4,
     "Iraq": 3,
-    "Norway": 4,
+    "Norway": 5,
     "Argentina": 4,
     "Algeria": 4,
     "Austria": 4,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Panama 0-1 Croatia",
-      "date": "2026-06-23",
-      "round": "Matchday 13",
-      "delta": -0.0043
-    },
     {
       "match": "Panama 0-2 England",
       "date": "2026-06-27",
@@ -224,6 +218,12 @@
       "date": "2026-07-04",
       "round": "Round of 16",
       "delta": -0.0118
+    },
+    {
+      "match": "Brazil 1-2 Norway",
+      "date": "2026-07-05",
+      "round": "Round of 16",
+      "delta": -0.0132
     }
   ],
   "eliminated": {
@@ -354,6 +354,10 @@
     "Canada": {
       "round": "Round of 16",
       "date": "2026-07-04"
+    },
+    "Brazil": {
+      "round": "Round of 16",
+      "date": "2026-07-05"
     }
   }
 }
