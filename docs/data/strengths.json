@@ -1,17 +1,17 @@
 {
   "meta": {
-    "updated_at": "2026-07-06T02:28:36.172553+00:00",
+    "updated_at": "2026-07-06T06:51:30.812771+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 87,
-    "matches_remaining": 17
+    "matches_played": 88,
+    "matches_remaining": 16
   },
   "strengths": {
     "France": 0.9605900604553018,
     "Spain": 0.9387274572065757,
     "Argentina": 0.9277307421802276,
     "Brazil": 0.8985563677095503,
-    "England": 0.8943295582774466,
+    "England": 0.899978225243642,
     "Portugal": 0.8787060901599153,
     "Germany": 0.8253028424702854,
     "Netherlands": 0.8432588805476785,
@@ -24,7 +24,7 @@
     "Senegal": 0.7368230576587217,
     "Japan": 0.7489502058518066,
     "Turkiye": 0.7139438287774987,
-    "Mexico": 0.7681833160986569,
+    "Mexico": 0.7625346491324615,
     "USA": 0.740731837960628,
     "Norway": 0.749828219335932,
     "South Korea": 0.6971752052057737,
@@ -56,7 +56,7 @@
     "Curacao": 0.4858406946690665
   },
   "played_count": {
-    "Mexico": 4,
+    "Mexico": 5,
     "South Africa": 4,
     "South Korea": 3,
     "Czechia": 3,
@@ -99,18 +99,12 @@
     "DR Congo": 4,
     "Uzbekistan": 3,
     "Colombia": 4,
-    "England": 4,
+    "England": 5,
     "Croatia": 4,
     "Ghana": 4,
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Panama 0-2 England",
-      "date": "2026-06-27",
-      "round": "Matchday 17",
-      "delta": -0.0065
-    },
     {
       "match": "Croatia 2-1 Ghana",
       "date": "2026-06-27",
@@ -224,6 +218,12 @@
       "date": "2026-07-05",
       "round": "Round of 16",
       "delta": -0.0132
+    },
+    {
+      "match": "Mexico 2-3 England",
+      "date": "2026-07-05",
+      "round": "Round of 16",
+      "delta": -0.0056
     }
   ],
   "eliminated": {
@@ -356,6 +356,10 @@
       "date": "2026-07-04"
     },
     "Brazil": {
+      "round": "Round of 16",
+      "date": "2026-07-05"
+    },
+    "Mexico": {
       "round": "Round of 16",
       "date": "2026-07-05"
     }
