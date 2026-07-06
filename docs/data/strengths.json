@@ -1,18 +1,18 @@
 {
   "meta": {
-    "updated_at": "2026-07-06T19:39:40.578520+00:00",
+    "updated_at": "2026-07-06T21:19:52.632019+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 88,
-    "matches_remaining": 16
+    "matches_played": 89,
+    "matches_remaining": 15
   },
   "strengths": {
     "France": 0.9605900604553018,
-    "Spain": 0.9387274572065757,
+    "Spain": 0.9459789949368997,
     "Argentina": 0.9277307421802276,
     "Brazil": 0.8985563677095503,
     "England": 0.899978225243642,
-    "Portugal": 0.8787060901599153,
+    "Portugal": 0.8714545524295912,
     "Germany": 0.8253028424702854,
     "Netherlands": 0.8432588805476785,
     "Belgium": 0.8193269634569416,
@@ -83,7 +83,7 @@
     "Egypt": 4,
     "Iran": 3,
     "New Zealand": 3,
-    "Spain": 4,
+    "Spain": 5,
     "Cape Verde": 4,
     "Saudi Arabia": 3,
     "Uruguay": 3,
@@ -95,7 +95,7 @@
     "Algeria": 4,
     "Austria": 4,
     "Jordan": 3,
-    "Portugal": 4,
+    "Portugal": 5,
     "DR Congo": 4,
     "Uzbekistan": 3,
     "Colombia": 4,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Croatia 2-1 Ghana",
-      "date": "2026-06-27",
-      "round": "Matchday 17",
-      "delta": 0.0047
-    },
     {
       "match": "South Africa 0-1 Canada",
       "date": "2026-06-28",
@@ -224,6 +218,12 @@
       "date": "2026-07-05",
       "round": "Round of 16",
       "delta": -0.0056
+    },
+    {
+      "match": "Portugal 0-1 Spain",
+      "date": "2026-07-06",
+      "round": "Round of 16",
+      "delta": -0.0073
     }
   ],
   "eliminated": {
@@ -362,6 +362,10 @@
     "Mexico": {
       "round": "Round of 16",
       "date": "2026-07-05"
+    },
+    "Portugal": {
+      "round": "Round of 16",
+      "date": "2026-07-06"
     }
   }
 }
