@@ -1,15 +1,15 @@
 {
   "meta": {
-    "updated_at": "2026-07-07T17:50:45.393577+00:00",
+    "updated_at": "2026-07-07T19:38:58.379827+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 90,
-    "matches_remaining": 14
+    "matches_played": 91,
+    "matches_remaining": 13
   },
   "strengths": {
     "France": 0.9605900604553018,
     "Spain": 0.9459789949368997,
-    "Argentina": 0.9277307421802276,
+    "Argentina": 0.9315938269886787,
     "Brazil": 0.8985563677095503,
     "England": 0.899978225243642,
     "Portugal": 0.8714545524295912,
@@ -32,7 +32,7 @@
     "Canada": 0.6861437491824725,
     "Czechia": 0.6563331034533707,
     "Iran": 0.6700676274544093,
-    "Egypt": 0.6719799817380756,
+    "Egypt": 0.6681168969296245,
     "Australia": 0.6624458968877663,
     "Scotland": 0.6400140004045192,
     "Algeria": 0.6392138780227855,
@@ -80,7 +80,7 @@
     "Japan": 3,
     "Tunisia": 2,
     "Belgium": 5,
-    "Egypt": 4,
+    "Egypt": 5,
     "Iran": 3,
     "New Zealand": 3,
     "Spain": 5,
@@ -91,7 +91,7 @@
     "Senegal": 4,
     "Iraq": 3,
     "Norway": 5,
-    "Argentina": 4,
+    "Argentina": 5,
     "Algeria": 4,
     "Austria": 4,
     "Jordan": 3,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Germany 1-1 Paraguay",
-      "date": "2026-06-29",
-      "round": "Round of 32",
-      "delta": -0.0048
-    },
     {
       "match": "Netherlands 1-1 Morocco",
       "date": "2026-06-29",
@@ -224,6 +218,12 @@
       "date": "2026-07-06",
       "round": "Round of 16",
       "delta": -0.0128
+    },
+    {
+      "match": "Argentina 3-2 Egypt",
+      "date": "2026-07-07",
+      "round": "Round of 16",
+      "delta": 0.0039
     }
   ],
   "eliminated": {
@@ -370,6 +370,10 @@
     "USA": {
       "round": "Round of 16",
       "date": "2026-07-06"
+    },
+    "Egypt": {
+      "round": "Round of 16",
+      "date": "2026-07-07"
     }
   }
 }
