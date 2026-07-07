@@ -1,10 +1,10 @@
 {
   "meta": {
-    "updated_at": "2026-07-06T23:57:42.346876+00:00",
+    "updated_at": "2026-07-07T02:45:37.792521+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 89,
-    "matches_remaining": 15
+    "matches_played": 90,
+    "matches_remaining": 14
   },
   "strengths": {
     "France": 0.9605900604553018,
@@ -15,7 +15,7 @@
     "Portugal": 0.8714545524295912,
     "Germany": 0.8253028424702854,
     "Netherlands": 0.8432588805476785,
-    "Belgium": 0.8193269634569416,
+    "Belgium": 0.8320834275439863,
     "Morocco": 0.8269589655072581,
     "Croatia": 0.7828843296806108,
     "Colombia": 0.7989604792756034,
@@ -25,7 +25,7 @@
     "Japan": 0.7489502058518066,
     "Turkiye": 0.7139438287774987,
     "Mexico": 0.7625346491324615,
-    "USA": 0.740731837960628,
+    "USA": 0.7279753738735832,
     "Norway": 0.749828219335932,
     "South Korea": 0.6971752052057737,
     "Austria": 0.6983868238491426,
@@ -68,7 +68,7 @@
     "Morocco": 5,
     "Haiti": 3,
     "Scotland": 3,
-    "USA": 4,
+    "USA": 5,
     "Paraguay": 5,
     "Australia": 4,
     "Turkiye": 3,
@@ -79,7 +79,7 @@
     "Netherlands": 3,
     "Japan": 3,
     "Tunisia": 2,
-    "Belgium": 4,
+    "Belgium": 5,
     "Egypt": 4,
     "Iran": 3,
     "New Zealand": 3,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "South Africa 0-1 Canada",
-      "date": "2026-06-28",
-      "round": "Round of 32",
-      "delta": -0.0061
-    },
     {
       "match": "Germany 1-1 Paraguay",
       "date": "2026-06-29",
@@ -224,6 +218,12 @@
       "date": "2026-07-06",
       "round": "Round of 16",
       "delta": -0.0073
+    },
+    {
+      "match": "USA 1-4 Belgium",
+      "date": "2026-07-06",
+      "round": "Round of 16",
+      "delta": -0.0128
     }
   ],
   "eliminated": {
@@ -364,6 +364,10 @@
       "date": "2026-07-05"
     },
     "Portugal": {
+      "round": "Round of 16",
+      "date": "2026-07-06"
+    },
+    "USA": {
       "round": "Round of 16",
       "date": "2026-07-06"
     }
