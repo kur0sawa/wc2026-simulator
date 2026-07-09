@@ -1,13 +1,13 @@
 {
   "meta": {
-    "updated_at": "2026-07-09T20:59:31.898177+00:00",
+    "updated_at": "2026-07-09T22:28:08.225717+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 92,
-    "matches_remaining": 12
+    "matches_played": 93,
+    "matches_remaining": 11
   },
   "strengths": {
-    "France": 0.9605900604553018,
+    "France": 0.969087468969475,
     "Spain": 0.9459789949368997,
     "Argentina": 0.9315938269886787,
     "Brazil": 0.8985563677095503,
@@ -16,7 +16,7 @@
     "Germany": 0.8253028424702854,
     "Netherlands": 0.8432588805476785,
     "Belgium": 0.8320834275439863,
-    "Morocco": 0.8269589655072581,
+    "Morocco": 0.818461556993085,
     "Croatia": 0.7828843296806108,
     "Colombia": 0.798187630776003,
     "Uruguay": 0.7463193011707118,
@@ -65,7 +65,7 @@
     "Qatar": 3,
     "Switzerland": 5,
     "Brazil": 5,
-    "Morocco": 5,
+    "Morocco": 6,
     "Haiti": 3,
     "Scotland": 3,
     "USA": 5,
@@ -87,7 +87,7 @@
     "Cape Verde": 4,
     "Saudi Arabia": 3,
     "Uruguay": 3,
-    "France": 4,
+    "France": 5,
     "Senegal": 4,
     "Iraq": 3,
     "Norway": 5,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Brazil 2-1 Japan",
-      "date": "2026-06-29",
-      "round": "Round of 32",
-      "delta": 0.0051
-    },
     {
       "match": "Ivory Coast 1-2 Norway",
       "date": "2026-06-30",
@@ -224,6 +218,12 @@
       "date": "2026-07-07",
       "round": "Round of 16",
       "delta": 0.0008
+    },
+    {
+      "match": "France 2-0 Morocco",
+      "date": "2026-07-09",
+      "round": "Quarter-final",
+      "delta": 0.0085
     }
   ],
   "eliminated": {
@@ -378,6 +378,10 @@
     "Colombia": {
       "round": "Round of 16",
       "date": "2026-07-07"
+    },
+    "Morocco": {
+      "round": "Quarter-final",
+      "date": "2026-07-09"
     }
   }
 }
