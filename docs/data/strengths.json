@@ -1,15 +1,15 @@
 {
   "meta": {
-    "updated_at": "2026-07-12T01:42:11.731709+00:00",
+    "updated_at": "2026-07-12T05:15:41.647993+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 95,
-    "matches_remaining": 9
+    "matches_played": 96,
+    "matches_remaining": 8
   },
   "strengths": {
     "France": 0.969087468969475,
     "Spain": 0.9518891407622648,
-    "Argentina": 0.9315938269886787,
+    "Argentina": 0.9276473522066245,
     "Brazil": 0.8985563677095503,
     "England": 0.8961646480662999,
     "Portugal": 0.8714545524295912,
@@ -20,7 +20,7 @@
     "Croatia": 0.7828843296806108,
     "Colombia": 0.798187630776003,
     "Uruguay": 0.7463193011707118,
-    "Switzerland": 0.7738278009563317,
+    "Switzerland": 0.7777742757383859,
     "Senegal": 0.7368230576587217,
     "Japan": 0.7489502058518066,
     "Turkiye": 0.7139438287774987,
@@ -63,7 +63,7 @@
     "Canada": 5,
     "Bosnia and Herzegovina": 4,
     "Qatar": 3,
-    "Switzerland": 5,
+    "Switzerland": 6,
     "Brazil": 5,
     "Morocco": 6,
     "Haiti": 3,
@@ -91,7 +91,7 @@
     "Senegal": 4,
     "Iraq": 3,
     "Norway": 6,
-    "Argentina": 5,
+    "Argentina": 6,
     "Algeria": 4,
     "Austria": 4,
     "Jordan": 3,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "England 2-1 DR Congo",
-      "date": "2026-07-01",
-      "round": "Round of 32",
-      "delta": 0.0038
-    },
     {
       "match": "USA 2-0 Bosnia and Herzegovina",
       "date": "2026-07-01",
@@ -224,6 +218,12 @@
       "date": "2026-07-11",
       "round": "Quarter-final",
       "delta": 0.0038
+    },
+    {
+      "match": "Argentina 1-1 Switzerland",
+      "date": "2026-07-11",
+      "round": "Quarter-final",
+      "delta": -0.0039
     }
   ],
   "eliminated": {
