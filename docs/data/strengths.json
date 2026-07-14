@@ -1,14 +1,14 @@
 {
   "meta": {
-    "updated_at": "2026-07-14T20:04:12.005219+00:00",
+    "updated_at": "2026-07-14T21:27:46.166867+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 96,
-    "matches_remaining": 8
+    "matches_played": 97,
+    "matches_remaining": 7
   },
   "strengths": {
-    "France": 0.969087468969475,
-    "Spain": 0.9518891407622648,
+    "France": 0.9565727871139947,
+    "Spain": 0.964403822617745,
     "Argentina": 0.9276473522066245,
     "Brazil": 0.8985563677095503,
     "England": 0.8961646480662999,
@@ -83,11 +83,11 @@
     "Egypt": 5,
     "Iran": 3,
     "New Zealand": 3,
-    "Spain": 6,
+    "Spain": 7,
     "Cape Verde": 4,
     "Saudi Arabia": 3,
     "Uruguay": 3,
-    "France": 5,
+    "France": 6,
     "Senegal": 4,
     "Iraq": 3,
     "Norway": 6,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "USA 2-0 Bosnia and Herzegovina",
-      "date": "2026-07-01",
-      "round": "Round of 32",
-      "delta": 0.0086
-    },
     {
       "match": "Belgium 2-2 Senegal",
       "date": "2026-07-01",
@@ -224,6 +218,12 @@
       "date": "2026-07-11",
       "round": "Quarter-final",
       "delta": -0.0039
+    },
+    {
+      "match": "France 0-2 Spain",
+      "date": "2026-07-14",
+      "round": "Semi-final",
+      "delta": -0.0125
     }
   ],
   "eliminated": {
@@ -386,6 +386,10 @@
     "Belgium": {
       "round": "Quarter-final",
       "date": "2026-07-10"
+    },
+    "France": {
+      "round": "Semi-final",
+      "date": "2026-07-14"
     }
   }
 }
