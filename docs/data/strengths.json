@@ -1,17 +1,17 @@
 {
   "meta": {
-    "updated_at": "2026-07-15T20:01:10.478655+00:00",
+    "updated_at": "2026-07-15T21:27:02.099920+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 97,
-    "matches_remaining": 7
+    "matches_played": 98,
+    "matches_remaining": 6
   },
   "strengths": {
     "France": 0.9565727871139947,
     "Spain": 0.964403822617745,
-    "Argentina": 0.9276473522066245,
+    "Argentina": 0.935710595633184,
     "Brazil": 0.8985563677095503,
-    "England": 0.8961646480662999,
+    "England": 0.8881014046397404,
     "Portugal": 0.8714545524295912,
     "Germany": 0.8253028424702854,
     "Netherlands": 0.8432588805476785,
@@ -91,7 +91,7 @@
     "Senegal": 4,
     "Iraq": 3,
     "Norway": 6,
-    "Argentina": 6,
+    "Argentina": 7,
     "Algeria": 4,
     "Austria": 4,
     "Jordan": 3,
@@ -99,18 +99,12 @@
     "DR Congo": 4,
     "Uzbekistan": 3,
     "Colombia": 5,
-    "England": 6,
+    "England": 7,
     "Croatia": 4,
     "Ghana": 4,
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Belgium 2-2 Senegal",
-      "date": "2026-07-01",
-      "round": "Round of 32",
-      "delta": -0.0025
-    },
     {
       "match": "Portugal 2-1 Croatia",
       "date": "2026-07-02",
@@ -224,6 +218,12 @@
       "date": "2026-07-14",
       "round": "Semi-final",
       "delta": -0.0125
+    },
+    {
+      "match": "England 1-2 Argentina",
+      "date": "2026-07-15",
+      "round": "Semi-final",
+      "delta": -0.0081
     }
   ],
   "eliminated": {
@@ -390,6 +390,10 @@
     "France": {
       "round": "Semi-final",
       "date": "2026-07-14"
+    },
+    "England": {
+      "round": "Semi-final",
+      "date": "2026-07-15"
     }
   }
 }
