@@ -1,17 +1,17 @@
 {
   "meta": {
-    "updated_at": "2026-07-18T22:37:35.651760+00:00",
+    "updated_at": "2026-07-18T23:41:20.006309+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 98,
-    "matches_remaining": 6
+    "matches_played": 99,
+    "matches_remaining": 5
   },
   "strengths": {
-    "France": 0.9565727871139947,
+    "France": 0.9425953075832222,
     "Spain": 0.964403822617745,
     "Argentina": 0.935710595633184,
     "Brazil": 0.8985563677095503,
-    "England": 0.8881014046397404,
+    "England": 0.902078884170513,
     "Portugal": 0.8714545524295912,
     "Germany": 0.8253028424702854,
     "Netherlands": 0.8432588805476785,
@@ -87,7 +87,7 @@
     "Cape Verde": 4,
     "Saudi Arabia": 3,
     "Uruguay": 3,
-    "France": 6,
+    "France": 7,
     "Senegal": 4,
     "Iraq": 3,
     "Norway": 6,
@@ -99,18 +99,12 @@
     "DR Congo": 4,
     "Uzbekistan": 3,
     "Colombia": 5,
-    "England": 7,
+    "England": 8,
     "Croatia": 4,
     "Ghana": 4,
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Portugal 2-1 Croatia",
-      "date": "2026-07-02",
-      "round": "Round of 32",
-      "delta": 0.0067
-    },
     {
       "match": "Spain 3-0 Austria",
       "date": "2026-07-02",
@@ -224,6 +218,12 @@
       "date": "2026-07-15",
       "round": "Semi-final",
       "delta": -0.0081
+    },
+    {
+      "match": "France 4-6 England",
+      "date": "2026-07-18",
+      "round": "Match for third place",
+      "delta": -0.014
     }
   ],
   "eliminated": {
@@ -388,8 +388,8 @@
       "date": "2026-07-10"
     },
     "France": {
-      "round": "Semi-final",
-      "date": "2026-07-14"
+      "round": "Match for third place",
+      "date": "2026-07-18"
     },
     "England": {
       "round": "Semi-final",
