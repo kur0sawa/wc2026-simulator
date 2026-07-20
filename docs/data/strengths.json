@@ -1,15 +1,15 @@
 {
   "meta": {
-    "updated_at": "2026-07-20T10:39:12.400387+00:00",
+    "updated_at": "2026-07-20T12:59:53.288985+00:00",
     "source": "https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json",
     "matches_total": 104,
-    "matches_played": 99,
-    "matches_remaining": 5
+    "matches_played": 100,
+    "matches_remaining": 4
   },
   "strengths": {
     "France": 0.9425953075832222,
-    "Spain": 0.964403822617745,
-    "Argentina": 0.935710595633184,
+    "Spain": 0.9635488833800554,
+    "Argentina": 0.9365655348708737,
     "Brazil": 0.8985563677095503,
     "England": 0.902078884170513,
     "Portugal": 0.8714545524295912,
@@ -83,7 +83,7 @@
     "Egypt": 5,
     "Iran": 3,
     "New Zealand": 3,
-    "Spain": 7,
+    "Spain": 8,
     "Cape Verde": 4,
     "Saudi Arabia": 3,
     "Uruguay": 3,
@@ -91,7 +91,7 @@
     "Senegal": 4,
     "Iraq": 3,
     "Norway": 6,
-    "Argentina": 7,
+    "Argentina": 8,
     "Algeria": 4,
     "Austria": 4,
     "Jordan": 3,
@@ -105,12 +105,6 @@
     "Panama": 3
   },
   "results_log": [
-    {
-      "match": "Spain 3-0 Austria",
-      "date": "2026-07-02",
-      "round": "Round of 32",
-      "delta": 0.0102
-    },
     {
       "match": "Switzerland 2-0 Algeria",
       "date": "2026-07-02",
@@ -224,6 +218,12 @@
       "date": "2026-07-18",
       "round": "Match for third place",
       "delta": -0.014
+    },
+    {
+      "match": "Spain 0-0 Argentina",
+      "date": "2026-07-19",
+      "round": "Final",
+      "delta": -0.0009
     }
   ],
   "eliminated": {
